@@ -1,1 +1,4 @@
 # China-s-bottom-trawl-fisheries
+# This depository included the data and code used to produce the paper, titled "A 'slash-and-burn' fishing dragon at sea: China's bottom trawl fisheries and their global impact.
+# 1) The 'CN_recons_catch_and_value.R' is used to reconstruct catch & landed value, as well as providing specific data for analyzing catch composition, mean trophic level, fishing-in-balance index, log-relative-price index, and mapping footprint of China's BTF around the world.
+# 2) The '
