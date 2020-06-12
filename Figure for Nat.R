@@ -106,7 +106,7 @@ max<-max(na.omit(sh$HpV_dobt+2*sh$HpV_dobt_se),na.omit(sh$HpV_dbt+2*sh$HpV_dbt_s
 max
 min<-min(na.omit(sh$HpV_dobt))/100
 min
-plot(sh$HpV_dobt/100~sh$year,type='l',col="black",lwd=2,ylim=c(min,max),ylab="",xlab="")
+plot(sh$HpV_dobt/100~sh$year,type='l',col="green3",lwd=2,ylim=c(min,max),ylab="",xlab="")
 polygon(x=c(sh$year[1:14],rev(sh$year[1:14])),
         y=c(rep(-1,14), rev(rep(19,14))),
         col=adjustcolor("cyan",alpha.f = 0.1),border = NA)
@@ -121,25 +121,25 @@ polygon(x=c(sh$year[47:69],rev(sh$year[47:69])),
         col=adjustcolor("cyan",alpha.f = 0.5),border = NA)
 polygon(x=c(sh$year,rev(sh$year)),
         y=c((sh$HpV_dobt-2*sh$HpV_dobt_se)/100, rev((sh$HpV_dobt+2*sh$HpV_dobt_se)/100)),
-        col=adjustcolor("black",alpha.f = 0.2),border = NA)
+        col=adjustcolor("green3",alpha.f = 0.2),border = NA)
 mtext("Horsepower per vessel (HpV, x100 kW)",font=2,side=2,col="black",line=2.5,cex=1,las=0) 
 abline(v=c(1978,1992,2002,2013),lty="dotted",col="black")
 text(x=1978,y=6,labels = "1978:\nEconomic reform",pos=2,col="black",cex=.8)
 text(x=1992,y=10,labels = "1992:\nAccelerating\neconomic reform",pos=2,col="black",cex=.8)
 text(x=2002,y=6,labels = "2002:\nVessel\nbuyback",pos=2,col="black",cex=.8)
 text(x=2013,y=15,labels = "2013:\nAccelerating\nfisheries\nupgrading",pos=2,col="black",cex=.8)
-lines(sh$HpV_dbt/100~sh$year,type='l',lwd=2,col="blue")
+lines(sh$HpV_dbt/100~sh$year,type='l',lwd=2,col="red1")
 polygon(x=c(sh$year,rev(sh$year)),
         y=c((sh$HpV_dbt-2*sh$HpV_dbt_se)/100, rev((sh$HpV_dbt+2*sh$HpV_dbt_se)/100)),
-        col=adjustcolor("blue",alpha.f = 0.2),border = NA)
+        col=adjustcolor("red1",alpha.f = 0.2),border = NA)
 mtext("c",side=3,adj=0,cex=1,font=2)
 ticks = seq(1950,2020,1)
 axis(side = 1, at = ticks,tck=-0.01,labels = NA)
 ticks = seq(0,18,1)
 axis(side = 2, at = ticks,tck=-0.01,labels = NA)
-legend("topleft",legend=c("BTs within C4S","BTs beyond C4S"),
+legend("topleft",legend=c("BTF within C4S","BTF beyond C4S"),
        text.font=2,lwd=2,
-       text.col=c("black","blue"),lty="solid",col=c("black","blue"))## Add Legend
+       text.col=c("green3","red1"),lty="solid",col=c("green3","red1"))## Add Legend
 
 ## d)
 par(mar=c(2,3.5,1,1))
@@ -147,7 +147,7 @@ max<-max(na.omit(sh$RHpV_bt_of+2*sh$RHpV_bt_of_se),na.omit(sh$RHpV_dbt_dof+2*sh$
 max
 min<-min(na.omit(sh$RHpV_bt_of-2*sh$RHpV_bt_of_se),na.omit(sh$RHpV_dbt_dof-2*sh$RHpV_dbt_dof_se))
 min
-plot(sh$RHpV_bt_of~sh$year,type='l',lwd=2,col="black",ylim=c(min,max),ylab="",xlab="")
+plot(sh$RHpV_bt_of~sh$year,type='l',lwd=2,col="green3",ylim=c(min,max),ylab="",xlab="")
 polygon(x=c(sh$year[1:14],rev(sh$year[1:14])),
         y=c(rep(-1,14), rev(rep(33,14))),
         col=adjustcolor("cyan",alpha.f = 0.1),border = NA)
@@ -162,21 +162,19 @@ polygon(x=c(sh$year[47:69],rev(sh$year[47:69])),
         col=adjustcolor("cyan",alpha.f = 0.5),border = NA)
 polygon(x=c(sh$year,rev(sh$year)),
         y=c(sh$RHpV_bt_of-2*sh$RHpV_bt_of_se, rev(sh$RHpV_bt_of+2*sh$RHpV_bt_of_se)),
-        col=adjustcolor("black",alpha.f = 0.2),border = NA)
+        col=adjustcolor("green3",alpha.f = 0.2),border = NA)
 
-mtext("HpV of BTs : HpV of other catchers",side=2,font=2,col="black",line=2.5,cex=1,las=0) 
+mtext("HpV of BTF : HpV of other fisheries",side=2,font=2,col="black",line=2.5,cex=1,las=0) 
 ticks = seq(0,30,1)
 axis(side = 2, at = ticks,tck=-0.01,labels = NA)
-abline(v=c(1978,1995,2002,2010),lty="dotted",col="black")
+abline(v=c(1978,1995,2002),lty="dotted",col="black")
 text(x=1978,y=7,labels = "1978:\nEconomic reform",pos=2,col="black",cex=.8)
 text(x=2002,y=10,labels = "2002:\nVessel\nbuyback",pos=4,col="black",cex=.8)
 text(x=1995,y=28,labels = "1995:\nSummer\nmoratorium",pos=4,col="black",cex=.8)
-text(x=2010,y=19,labels = "2010:\nAccelerating\nsubsidy\ndistribution",pos=2,col="black",cex=.8)
-
-lines(sh$RHpV_dbt_dof~sh$year,type='l',xlim=c(1950,2020),lwd=2,col="blue",ylab="",xlab="")
+lines(sh$RHpV_dbt_dof~sh$year,type='l',xlim=c(1950,2020),lwd=2,col="red1",ylab="",xlab="")
 polygon(x=c(sh$year[37:69],rev(sh$year[37:69])),
         y=c(sh$RHpV_dbt_dof[37:69]-2*sh$RHpV_dbt_dof_se[37:69], rev(sh$RHpV_dbt_dof[37:69]+2*sh$RHpV_dbt_dof_se[37:69])),
-        col=adjustcolor("blue",alpha.f = 0.2),border = NA)
+        col=adjustcolor("red1",alpha.f = 0.2),border = NA)
 
 ticks = seq(1950,2020,1)
 axis(side = 1, at = ticks,tck=-0.01,labels = NA)
@@ -186,13 +184,13 @@ abline(h=1,col="red1",lty="dashed")
 mtext("d",side=3,adj=0,cex=1, font=2)
 legend("topleft",legend=c("For vessels within C4S","For vessels beyond C4S"),
        text.font=2,lwd=2,
-       text.col=c("black","blue"),lty="solid",col=c("black","blue"))## Add Legend
+       text.col=c("green3","red1"),lty="solid",col=c("green3","red1"))## Add Legend
 
 dev.off()
 
 
 
-## Fig.2
+## Fig. 2
 setwd("C:/Users/xiong/Desktop/MS_history of BTF China")
 sh<-read.csv("Catch_new 2020.csv",header=TRUE,sep=',')
 str(sh)
@@ -218,22 +216,22 @@ polygon(x=c(sh$year[29:47],rev(sh$year[29:47])),
         col=adjustcolor("cyan",alpha.f = 0.3),border = NA)
 polygon(x=c(sh$year[47:69],rev(sh$year[47:69])),
         y=c(rep(-1,23), rev(rep(18,23))),
-        col=adjustcolor("cyan",alpha.f = 0.4),border = NA)
+        col=adjustcolor("cyan",alpha.f = 0.5),border = NA)
 
 polygon(x=c(sh$year,rev(sh$year)),
         y=c((sh$C_bt-2*sh$C_bt_se)/1000000, rev((sh$C_bt+2*sh$C_bt_se)/1000000)),
         col=adjustcolor("black",alpha.f = 0.1),border = NA)
 
 sh$C_bt_eez_se[65]<-0
-lines(sh$C_bt_eez/1000000~sh$year,type='l',lwd=2,col="blue")
+lines(sh$C_bt_eez/1000000~sh$year,type='l',lwd=2,col="red")
 polygon(x=c(sh$year,rev(sh$year)),
         y=c((sh$C_bt_eez-2*sh$C_bt_eez_se)/1000000, rev((sh$C_bt_eez+2*sh$C_bt_eez_se)/1000000)),
-        col=adjustcolor("blue",alpha.f = 0.1),border = NA)
+        col=adjustcolor("red",alpha.f = 0.1),border = NA)
 sh$C_bt_dom_se[65]<-0
-lines(sh$C_bt_dom/1000000~sh$year,type='l',lwd=2,col="red")
+lines(sh$C_bt_dom/1000000~sh$year,type='l',lwd=2,col="blue")
 polygon(x=c(sh$year,rev(sh$year)),
         y=c((sh$C_bt_dom-2*sh$C_bt_dom_se)/1000000, rev((sh$C_bt_dom+2*sh$C_bt_dom_se)/1000000)),
-        col=adjustcolor("red",alpha.f = 0.1),border = NA)
+        col=adjustcolor("blue",alpha.f = 0.1),border = NA)
 mtext("Landings (Mt)",side=2,col="black",font=2,line=2,cex=1,las=0) 
 box()
 ticks = seq(1950,2018,1)
@@ -244,17 +242,15 @@ ticks = seq(0,15,1)
 axis(side = 2, at = ticks,tck=-0.01,labels = NA)
 ticks = seq(0,15,5)
 axis(side = 2, at = ticks,tck=-0.03,labels = ticks)
-abline(v=c(1978,1985,1996,1999,2000,2013),lty="dotted",col="grey50")
-text(x=1996,y=.8,labels = "1996:\nUNCLOS\nRatification",pos=2,col="black",cex=0.8)
-text(x=1978,y=3,labels = "1978:\nEconomic\nreform\n(privitization)",pos=2,col="black",cex=0.8)
-text(x=1985,y=9,labels = "1985:\nDeveloping\ndistant-water\nfisheries",pos=4,col="black",cex=0.8)
-text(x=1999,y=14,labels = "1999:\nZero\nGrowth",pos=4,col="black",cex=0.8)
-text(x=2000,y=10,labels = "2000:\nNegative\nGrowth",pos=4,col="black",cex=0.8)
+abline(v=c(1978,1985,1996,2013),lty="dotted",col="grey50")
+text(x=1996,y=11,labels = "1996:\nUNCLOS\nRatification",pos=2,col="black",cex=0.8)
+text(x=1978,y=2.5,labels = "1978:\nEconomic\nreform\n(privitization)",pos=2,col="black",cex=0.8)
+text(x=1985,y=7,labels = "1985:\nDeveloping\ndistant-water\nfisheries",pos=2,col="black",cex=0.8)
 text(x=2013,y=1,labels = "2013:\nAccelerating\nfisheries\nupgrading",pos=2,col="black",cex=0.8)
 mtext("a",side=3,adj=0,cex=1,font=2)
-legend("topleft",legend=c("All waters that China fished","China's four sea (C4S)","China's claimed EEZ"),
+legend("topleft",legend=c("All waters that China fished","China's four seas (C4S)","China's claimed EEZ"),
        text.font=2,lwd=2,
-       text.col=c("black","red","blue"),lty="solid",col=c("black","red","blue"))## Add Legend
+       text.col=c("black","blue","red"),lty="solid",col=c("black","blue","red"))## Add Legend
 
 ## b)
 str(sh)
@@ -270,7 +266,7 @@ polygon(x=c(sh$year[29:47],rev(sh$year[29:47])),
         col=adjustcolor("cyan",alpha.f = 0.3),border = NA)
 polygon(x=c(sh$year[47:69],rev(sh$year[47:69])),
         y=c(rep(-10,23), rev(rep(140,23))),
-        col=adjustcolor("cyan",alpha.f = 0.4),border = NA)
+        col=adjustcolor("cyan",alpha.f = 0.5),border = NA)
 polygon(x=c(sh$year,rev(sh$year)),
         y=c(sh$RC_bt_all-2*sh$RC_bt_all_se, rev(sh$RC_bt_all+2*sh$RC_bt_all_se)),
         col=adjustcolor("black",alpha.f = 0.1),border = NA)
@@ -284,13 +280,14 @@ polygon(x=c(sh$year,rev(sh$year)),
         col=adjustcolor("blue",alpha.f = 0.1),border = NA)
 box()
 mtext("% landings",side=2,col="black",line=2.1,cex=1,las=0,font=2) 
-abline(v=c(1975,1985,1995,2013),lty="dotted",col="grey")
-text(x=1958,y=94,labels = "Moving offshore",pos=4,col="red1",cex=0.8)
+abline(v=c(1955,1975,1985,1995,2013),lty="dotted",col="grey")
+text(x=1955,y=70,labels = "1955:\nNo-trawl\nzone",pos=4,col="black",cex=0.8)
+text(x=1957,y=94,labels = "Moving offshore",pos=4,col="red1",cex=0.8)
 text(x=1974,y=90,labels = "Moving\ninshore",pos=4,col="red1",cex=0.8)
-text(x=1996,y=94,labels = "Moving to\ndistant waters",pos=4,col="red1",cex=0.8)
+text(x=1986,y=94,labels = "Moving to distant waters",pos=4,col="red1",cex=0.8)
 text(x=1975,y=4,labels = "1975:\nSino-Japanese\nFishery Agreement",pos=2,col="black",cex=0.8)
 text(x=1985,y=60,labels = "1985:\nDeveloping\ndistant-water fisheries",pos=2,col="black",cex=0.8)
-text(x=1995,y=40,labels = "1995:\nSummer moratorium",pos=4,col="black",cex=0.8)
+text(x=1995,y=30,labels = "1995:\nSummer\nmoratorium",pos=2,col="black",cex=0.8)
 text(x=2013,y=10,labels = "2013:\nAccelerating\nfisheries\nupgrading",pos=2,col="black",cex=0.8)
 
 abline(h=50,lty="dotted",col="red1")
@@ -341,12 +338,12 @@ axis(side = 2, at = ticks,tck=-0.03,labels = ticks)
 
 abline(v=c(1955,1963,1973,1975,1981,2013),lty="dotted",col="black")
 text(x=1955,y=3,labels = "1955:\nNo-trawl\nzone",pos=4,col="black",cex=0.8)
-text(x=1973,y=1,labels = "1973:\nCrude oil\ncrisis",pos=2,col="black",cex=0.8)
+text(x=1973,y=.8,labels = "1973:\nCrude oil\ncrisis",pos=2,col="black",cex=0.8)
 
-text(x=1975,y=4.7,labels = "1975:\nSino-Japanese\nFishery\nAgreement",pos=4,col="black",cex=0.8)
+text(x=1975,y=4.7,labels = "1975:\nSino-Japanese\nFishery Agreement",pos=4,col="black",cex=0.8)
 text(x=1963,y=6.2,labels = "1963:\nTechnology\ndevelopment",pos=4,col="black",cex=0.8)
 text(x=1981,y=2,labels = "1981:\nSummer\nmoratorium",pos=4,col="black",cex=0.8)
-text(x=2013,y=4,labels = "2013:\nAccelerating\nfisheries\nupgrading",pos=2,col="black",cex=0.8)
+text(x=2013,y=3,labels = "2013:\nAccelerating\nfisheries\nupgrading",pos=2,col="black",cex=0.8)
 par(new=T)
 plot(sh$VpH_dobt/10000~sh$year,type='l',lwd=2,col="blue",xlim=c(1950,2018),ylim=c(0,max),ylab="",xlab="",axes=FALSE)
 polygon(x=c(sh$year,rev(sh$year)),
@@ -397,21 +394,63 @@ legend("topright",legend=c("CPUE (t / (kW·year))","VPUE ($1000 / (kW·year))"),
 dev.off()
 
 ## Fig. 3
+### Plot MTL breakpoints and segmented linear regressions
 setwd("C:/Users/xiong/Desktop/MS_history of BTF China")
+cp<-read.csv("CN_MTL2.csv",header=TRUE,sep=',')
 sh<-read.csv("CN_bt_fungroup2 2020.csv",header=TRUE,sep=',')
 str(sh)
-df4<-read.csv("CN_MTL_FIB.csv",header=TRUE,sep=',')
-str(df4)
-df3<-read.csv("CN_MTL2.csv",header=TRUE,sep=',')
-str(df3)
-## plot a)
+df<-read.csv("CN_MTL_FIB.csv",header=TRUE,sep=',')
+str(df)
+
 tiff("Figure/New/Fig.3 Nature-Fishery health indices.tif",width = 6.8, height = 7.8, units = 'in', res = 300)
+library(strucchange)
+# define breakpoint functions
+breakpoint2_c<-function(cp,i,k,year1,year2){
+        n_tr.ts<-cp[c(2,i)]
+        n_tr.ts<-na.omit(n_tr.ts)
+        n_tr.ts$Date<-as.Date(n_tr.ts$year,format="%Y")
+        n_tr.ts$Date<-as.POSIXct(n_tr.ts$Date)
+        str(n_tr.ts)
+        n_tr_ts<-ts(n_tr.ts[2],start = c(year1,1),end = c(year2,1),frequency=1)
+        ntr_ts <- breakpoints(n_tr_ts ~ 1+n_tr.ts$Date,h=3,het.reg=T)# get the breakpoints
+        summary(ntr_ts)
+        ci_ntr_ts<-confint(ntr_ts)
+        ci_ntr_ts
+        plot(n_tr_ts/k,xlab="",pch=15,type="p",ylab="",cex=1,ylim=c(2.8,3.85),xaxt="n", yaxt="n")
+        ntr_ts
+        ci_ntr_ts
+} # for plot break points only
+breakpoint3_c<-function(cp,i,k,year1,year2){
+        n_tr.ts<-cp[c(2,i)]
+        n_tr.ts<-na.omit(n_tr.ts)
+        n_tr.ts$Date<-as.Date(n_tr.ts$year,format="%Y")
+        n_tr.ts$Date<-as.POSIXct(n_tr.ts$Date)
+        str(n_tr.ts)
+        n_tr_ts<-ts(n_tr.ts[2],start = c(year1,1),end = c(year2,1),frequency=1)
+        ntr_ts <- breakpoints(n_tr_ts ~ 1+n_tr.ts$Date,h=3,het.reg=T)# get the breakpoints
+        summary(ntr_ts)
+        ci_ntr_ts<-confint(ntr_ts)
+        ci_ntr_ts
+        plot(n_tr_ts/k,xlab="",pch=16,col="blue",type="p",ylab="",cex=1,axes=F,ylim=c(2.8,3.85))
+} # for plot break points only
+breakpoint4_c<-function(cp,i,k,year1,year2){
+        n_tr.ts<-cp[c(2,i)]
+        n_tr.ts<-na.omit(n_tr.ts)
+        n_tr.ts$Date<-as.Date(n_tr.ts$year,format="%Y")
+        n_tr.ts$Date<-as.POSIXct(n_tr.ts$Date)
+        str(n_tr.ts)
+        n_tr_ts<-ts(n_tr.ts[2],start = c(year1,1),end = c(year2,1),frequency=1)
+        ntr_ts <- breakpoints(n_tr_ts ~ 1+n_tr.ts$Date,h=3,het.reg=T)# get the breakpoints
+        summary(ntr_ts)
+        ci_ntr_ts<-confint(ntr_ts)
+        ci_ntr_ts
+        plot(n_tr_ts/k,xlab="",pch=17,col="red",type="p",ylab="",cex=1,axes=F,ylim=c(2.8,3.85))
+} # for plot break points only
+str(cp)
 par(mar=c(2,5.2,1.2,0.1),mfrow=c(3,1),las=1)
-min<-min(df3$MTL,df3[,3],df3$MTL2)
-min
-max<-max(df3$MTL_m,df3[,3])
-max
-plot(MTL~year,df3,type='o',lty="solid",pch=1,ylim=c(2.8,3.85),xlim=c(1950,2015),xlab="",ylab="",xaxt="n", yaxt="n")
+# MTL of all landings
+breakpoint2_c(cp,3,1,1950,2014)
+## plot era shade
 polygon(x=c(sh$year[1:14],rev(sh$year[1:14])),
         y=c(rep(-10,14), rev(rep(5,14))),
         col=adjustcolor("cyan",alpha.f = 0.1),border = NA)
@@ -424,27 +463,152 @@ polygon(x=c(sh$year[29:47],rev(sh$year[29:47])),
 polygon(x=c(sh$year[47:65],rev(sh$year[47:65])),
         y=c(rep(-10,19), rev(rep(5,19))),
         col=adjustcolor("cyan",alpha.f = 0.5),border = NA)
-lines(df3[,3]~df3$year,type='o',pch=17,col="black")
-lines(df3$MTL2~df3$year,type='l',col="red1")
-abline(v=c(1975,1978,1987,1996,2002,2006),lty="dotted",col="black")
-text(x=1975,y=3.4,labels = "1975:\nSino-Japanese\nFishery\nAgreement",pos=2,col="black",cex=1)
+## build segmented regression models based on breakpoints
+lm1<-lm(cp[1:23,3]~cp[1:23,2]);summary(lm1) # r2=0.59, s=-0.004, p<.001
+lm2<-lm(cp[24:28,3]~cp[24:28,2]);summary(lm2) # r2=0.96, s=-0.063, p<.01
+lm3<-lm(cp[28:30,3]~cp[28:30,2]);summary(lm3) # r2=0.93, s=0.095, p=.17
+lm4<-lm(cp[30:39,3]~cp[30:39,2]);summary(lm4) # r2=0.94, s=-0.041, p<.001
+lm5<-lm(cp[40:65,3]~cp[40:65,2]);summary(lm5) # r2=0.42, s=0.0027, p<.001
+lm7<-lm(cp[39:41,3]~cp[39:41,2]);summary(lm7) # r2=0.86, s=0.065, p =.24
+
+pred_lm1<-as.data.frame(na.omit(predict(lm1,interval = "confidence")))
+pred_lm2<-as.data.frame(na.omit(predict(lm2,interval = "confidence")))
+pred_lm3<-as.data.frame(na.omit(predict(lm3,interval = "confidence")))
+pred_lm4<-as.data.frame(na.omit(predict(lm4,interval = "confidence")))
+pred_lm5<-as.data.frame(na.omit(predict(lm5,interval = "confidence")))
+
+## plot fit
+lines(x=seq(1950,1972,1),fitted(lm1),col="black",lty="solid",lwd=1)
+polygon(x=c(seq(1950,1972,1),rev(seq(1950,1972,1))),
+        y=c(pred_lm1$lwr, rev(pred_lm1$upr)),
+        col=adjustcolor("black",alpha.f = 0.2),border = NA)
+lines(x=seq(1973,1977,1),fitted(lm2),col="black",lty="solid",lwd=1)
+polygon(x=c(seq(1973,1977,1),rev(seq(1973,1977,1))),
+        y=c(pred_lm2$lwr, rev(pred_lm2$upr)),
+        col=adjustcolor("black",alpha.f = 0.2),border = NA)
+lines(x=seq(1977,1979,1),fitted(lm3),col="black",lty="solid",lwd=1)
+lines(x=seq(1979,1988,1),fitted(lm4),col="black",lty="solid",lwd=1)
+polygon(x=c(seq(1979,1988,1),rev(seq(1979,1988,1))),
+        y=c(pred_lm4$lwr, rev(pred_lm4$upr)),
+        col=adjustcolor("black",alpha.f = 0.2),border = NA)
+lines(x=seq(1988,1990,1),fitted(lm7),col="black",lty="solid",lwd=1)
+lines(x=seq(1989,2014,1),fitted(lm5),col="black",lty="solid",lwd=1)
+polygon(x=c(seq(1989,2014,1),rev(seq(1989,2014,1))),
+        y=c(pred_lm5$lwr, rev(pred_lm5$upr)),
+        col=adjustcolor("black",alpha.f = 0.2),border = NA)
+
+
+### MTL of BTF landings
+par(new=T)
+breakpoint3_c(cp,4,1,1950,2014)
+lm1<-lm(cp[1:22,4]~cp[1:22,2]);summary(lm1) # r2=0.90, s=-0.004, p<.001
+lm2<-lm(cp[23:28,4]~cp[23:28,2]);summary(lm2) # r2=0.95, s=-0.024, p<.01
+lm3<-lm(cp[28:32,4]~cp[28:32,2]);summary(lm3) # r2=0.86, s=0.021, p<.05
+lm4<-lm(cp[32:39,4]~cp[32:39,2]);summary(lm4) # r2=0.95, s=-0.036, p<.001
+lm5<-lm(cp[40:53,4]~cp[40:53,2]);summary(lm5) # r2=0.004, s=0.000, p =.84
+lm6<-lm(cp[54:65,4]~cp[54:65,2]);summary(lm6) # r2=0.47, s=0.0034, p <0.05
+lm7<-lm(cp[39:41,4]~cp[39:41,2]);summary(lm7) # r2=0.95, s=0.052, p =.14
+lm8<-lm(cp[53:55,4]~cp[53:55,2]);summary(lm8) # r2=0.90, s=0.032, p =.20
+
+pred_lm1<-as.data.frame(na.omit(predict(lm1,interval = "confidence")))
+pred_lm2<-as.data.frame(na.omit(predict(lm2,interval = "confidence")))
+pred_lm3<-as.data.frame(na.omit(predict(lm3,interval = "confidence")))
+pred_lm4<-as.data.frame(na.omit(predict(lm4,interval = "confidence")))
+pred_lm5<-as.data.frame(na.omit(predict(lm5,interval = "confidence")))
+pred_lm6<-as.data.frame(na.omit(predict(lm6,interval = "confidence")))
+
+## plot fit
+lines(x=seq(1950,1971,1),fitted(lm1),col="blue",lty="solid",lwd=1)
+polygon(x=c(seq(1950,1971,1),rev(seq(1950,1971,1))),
+        y=c(pred_lm1$lwr, rev(pred_lm1$upr)),
+        col=adjustcolor("blue",alpha.f = 0.2),border = NA)
+lines(x=seq(1972,1977,1),fitted(lm2),col="blue",lty="solid",lwd=1)
+polygon(x=c(seq(1972,1977,1),rev(seq(1972,1977,1))),
+        y=c(pred_lm2$lwr, rev(pred_lm2$upr)),
+        col=adjustcolor("blue",alpha.f = 0.2),border = NA)
+lines(x=seq(1977,1981,1),fitted(lm3),col="blue",lty="solid",lwd=1)
+polygon(x=c(seq(1977,1981,1),rev(seq(1977,1981,1))),
+        y=c(pred_lm3$lwr, rev(pred_lm3$upr)),
+        col=adjustcolor("blue",alpha.f = 0.2),border = NA)
+lines(x=seq(1981,1988,1),fitted(lm4),col="blue",lty="solid",lwd=1)
+polygon(x=c(seq(1981,1988,1),rev(seq(1981,1988,1))),
+        y=c(pred_lm4$lwr, rev(pred_lm4$upr)),
+        col=adjustcolor("blue",alpha.f = 0.2),border = NA)
+lines(x=seq(1988,1990,1),fitted(lm7),col="blue",lty="solid",lwd=1)
+lines(x=seq(2002,2004,1),fitted(lm8),col="blue",lty="solid",lwd=1)
+lines(x=seq(1989,2002,1),fitted(lm5),col="blue",lty="solid",lwd=1)
+polygon(x=c(seq(1989,2002,1),rev(seq(1989,2002,1))),
+        y=c(pred_lm5$lwr, rev(pred_lm5$upr)),
+        col=adjustcolor("blue",alpha.f = 0.2),border = NA)
+lines(x=seq(2003,2014,1),fitted(lm6),col="blue",lty="solid",lwd=1)
+polygon(x=c(seq(2003,2014,1),rev(seq(2003,2014,1))),
+        y=c(pred_lm6$lwr, rev(pred_lm6$upr)),
+        col=adjustcolor("blue",alpha.f = 0.2),border = NA)
+### MTL of BTF landings consumed directly
+par(new=T)
+breakpoint4_c(cp,5,1,1950,2014)
+lm1<-lm(cp[1:22,5]~cp[1:22,2]);summary(lm1) # r2=0.73, s=-0.0054, p<.001
+lm2<-lm(cp[23:27,5]~cp[23:27,2]);summary(lm2) # r2=0.98, s=-0.028, p<.01
+lm3<-lm(cp[27:32,5]~cp[27:32,2]);summary(lm3) # r2=0.42, s=0.009, p=.16
+lm4<-lm(cp[32:39,5]~cp[32:39,2]);summary(lm4) # r2=0.87, s=-0.022, p<.001
+lm5<-lm(cp[41:56,5]~cp[41:56,2]);summary(lm5) # r2=0.41, s=-0.0024, p <0.01
+lm6<-lm(cp[56:65,5]~cp[56:65,2]);summary(lm6) # r2=0.80, s=0.0057, p <0.001
+lm7<-lm(cp[39:41,5]~cp[39:41,2]);summary(lm7) # r2=0.86, s=0.042, p =.25
+
+
+pred_lm1<-as.data.frame(na.omit(predict(lm1,interval = "confidence")))
+pred_lm2<-as.data.frame(na.omit(predict(lm2,interval = "confidence")))
+pred_lm3<-as.data.frame(na.omit(predict(lm3,interval = "confidence")))
+pred_lm4<-as.data.frame(na.omit(predict(lm4,interval = "confidence")))
+pred_lm5<-as.data.frame(na.omit(predict(lm5,interval = "confidence")))
+pred_lm6<-as.data.frame(na.omit(predict(lm6,interval = "confidence")))
+
+## plot fit
+lines(x=seq(1950,1971,1),fitted(lm1),col="red",lty="solid",lwd=1)
+polygon(x=c(seq(1950,1971,1),rev(seq(1950,1971,1))),
+        y=c(pred_lm1$lwr, rev(pred_lm1$upr)),
+        col=adjustcolor("red",alpha.f = 0.2),border = NA)
+lines(x=seq(1972,1976,1),fitted(lm2),col="red",lty="solid",lwd=1)
+polygon(x=c(seq(1972,1976,1),rev(seq(1972,1976,1))),
+        y=c(pred_lm2$lwr, rev(pred_lm2$upr)),
+        col=adjustcolor("red",alpha.f = 0.2),border = NA)
+lines(x=seq(1976,1981,1),fitted(lm3),col="red",lty="solid",lwd=1)
+polygon(x=c(seq(1976,1981,1),rev(seq(1976,1981,1))),
+        y=c(pred_lm3$lwr, rev(pred_lm3$upr)),
+        col=adjustcolor("red",alpha.f = 0.2),border = NA)
+lines(x=seq(1981,1988,1),fitted(lm4),col="red",lty="solid",lwd=1)
+polygon(x=c(seq(1981,1988,1),rev(seq(1981,1988,1))),
+        y=c(pred_lm4$lwr, rev(pred_lm4$upr)),
+        col=adjustcolor("red",alpha.f = 0.2),border = NA)
+lines(x=seq(1988,1990,1),fitted(lm7),col="red",lty="solid",lwd=1)
+lines(x=seq(1990,2005,1),fitted(lm5),col="red",lty="solid",lwd=1)
+polygon(x=c(seq(1990,2005,1),rev(seq(1990,2005,1))),
+        y=c(pred_lm5$lwr, rev(pred_lm5$upr)),
+        col=adjustcolor("red",alpha.f = 0.2),border = NA)
+lines(x=seq(2005,2014,1),fitted(lm6),col="red",lty="solid",lwd=1)
+polygon(x=c(seq(2005,2014,1),rev(seq(2005,2014,1))),
+        y=c(pred_lm6$lwr, rev(pred_lm6$upr)),
+        col=adjustcolor("red",alpha.f = 0.2),border = NA)
+
+abline(v=c(1978,1987,1996,2002,2006),lty="dotted",col="black")
 text(x=1978,y=3.75,labels = "1978:\nEconomic\nreform",pos=2,col="black",cex=1)
-text(x=1987,y=3.2,labels = "1987:\nSummer\nmoratorium",pos=2,col="black",cex=1)
+text(x=1987,y=3.75,labels = "1987:\nSummer\nmoratorium",pos=2,col="black",cex=1)
 
 text(x=1996,y=3.2,labels = "1996:\nUNCLOS\nRatification",pos=2,col="black",cex=1)
 text(x=2002,y=3.3,labels = "2002:\nVessel\nbuyback",pos=2,col="black",cex=1)
-text(x=2006,y=3.22,labels = "2006:\nOutline for\nprotecting\naquatic\nresources",pos=4,col="black",cex=1)
-text(x=1950,y=2.85,labels = "Fishing through the food web",pos=4,col="red1",cex=1)
-text(x=1990,y=2.8,labels = "Biomass trawling",pos=4,col="red1",cex=1)
-text(x=1988,y=c(3.20,2.89,2.75),labels = c("3.34","2.85","2.82"),pos=3,col=c("black","black","red1"),cex=1)
+text(x=2006,y=3.22,labels = "2006:\nExtended\nSummer\nmoratorium\n& combatting\nillegal fishing",pos=4,col="black",cex=1)
 
-text(x=1950,y=c(3.67,3.17,3.01),labels =c("3.67","3.17","3.12"),pos=3,col=c("black","black","red1"))
+text(x=1950,y=2.85,labels = "Fishing down/through the food web",pos=4,col="red1",cex=1)
+text(x=1990,y=2.8,labels = "Intensified biomass trawling",pos=4,col="red1",cex=1)
+text(x=1988,y=c(3.20,2.89,2.74),labels = c("3.34","2.85","2.82"),pos=3,col=c("black","blue","red1"),cex=1)
 
-text(x=1963,y=c(3.68,3.08,2.92),labels =c("3.68","3.08","3.03"),pos=3,col=c("black","black","red1"))
-text(x=1978,y=c(3.49,3.04,2.82),labels =c("3.49","3.04","2.98"),pos=3,col=c("black","black","red1"))
-text(x=1996,y=c(3.5,2.97,2.80),labels =c("3.5","2.97","2.91"),pos=3,col=c("black","black","red1"))
+text(x=1950,y=c(3.72,3.17,3.01),labels =c("3.67","3.17","3.12"),pos=3,col=c("black","blue","red1"))
 
-text(x=2015,y=c(3.54,3.07,2.81),labels =c("3.54","3.06","2.92"),pos=3,col=c("black","black","red1"),cex=1)
+#text(x=1963,y=c(3.68,3.08,2.92),labels =c("3.68","3.08","3.03"),pos=3,col=c("black","blue","red1"))
+#text(x=1978,y=c(3.49,3.04,2.82),labels =c("3.49","3.04","2.98"),pos=3,col=c("black","black","red1"))
+#text(x=1996,y=c(3.5,2.97,2.80),labels =c("3.5","2.97","2.91"),pos=3,col=c("black","black","red1"))
+
+text(x=2015,y=c(3.54,2.97,2.81),labels =c("3.54","3.06","2.92"),pos=3,col=c("black","blue","red1"),cex=1)
 # Changing x axis
 xtick<-seq(1950, 2015, by=1)
 axis(side = 1, at = xtick, tck=-0.01,labels = NA)
@@ -460,15 +624,54 @@ mtext("")
 mtext("MTL\nin China's claimed EEZ",side=2,font=2,col="black",line=2.5,cex=1,las=0) 
 legend("topright",legend=c("MTL of all landings (estimated by SAUP)","MTL of BTF landings (this study)",expression("MTL"[h]* " of BTF landings (this study)")),
        cex=1,
-       text.col=c("black","black","red"),lty="solid",pch=c(17,1,NA),col=c("black","black","red1"))## Add Legend
-
+       text.col=c("black","blue","red"),pch=c(15,16,17),col=c("black","blue","red"))## Add Legend
 mtext("a",side=3,adj=0,cex=1, font=2)
 
 ## plot b)
-str(df4)
-max<-max(df4$FIB,df4$fib_index);max
-min<-min(df4$FIB,df4$fib_index);min
-plot(FIB~year,df4,type='o',lty="solid",pch=1,xlim=c(1950,2015),ylim=c(min,max),xlab="",ylab="",las=1,xaxt="n", yaxt="n")
+par(mar=c(2,5.2,1.2,0.1))
+str(df)
+max<-max(df$df_LRPI,df$df_LRPI_f);max
+min<-min(df$df_LRPI,df$df_LRPI_f);min
+plot(df_LRPI~year,df,type='l',xlim=c(1950,2015),ylim=c(min,max),xlab="",ylab="",las=1,xaxt="n", yaxt="n")
+polygon(x=c(sh$year[1:14],rev(sh$year[1:14])),
+        y=c(rep(-10,14), rev(rep(4,14))),
+        col=adjustcolor("cyan",alpha.f = 0.1),border = NA)
+polygon(x=c(sh$year[14:29],rev(sh$year[14:29])),
+        y=c(rep(-10,16), rev(rep(4,16))),
+        col=adjustcolor("cyan",alpha.f = 0.2),border = NA)
+polygon(x=c(sh$year[29:47],rev(sh$year[29:47])),
+        y=c(rep(-10,19), rev(rep(4,19))),
+        col=adjustcolor("cyan",alpha.f = 0.3),border = NA)
+polygon(x=c(sh$year[47:65],rev(sh$year[47:65])),
+        y=c(rep(-10,19), rev(rep(4,19))),
+        col=adjustcolor("cyan",alpha.f = 0.5),border = NA)
+lines(df_LRPI_f~year,df,type='l',col="blue",lwd=2)
+abline(h=0,lty="dashed",col="red1")
+xtick<-seq(1950, 2015, by=1)
+axis(side = 1, at = xtick, tck=-0.01,labels = NA)
+xtick<-seq(1950, 2015, by=5)
+axis(side = 1, at = xtick, tck=-0.03,labels = xtick)
+
+ytick<-seq(-0.35,0.25,by=0.05)
+axis(side = 2, at = ytick, tck=-0.01,labels = NA)
+ytick<-seq(-0.3,0.2,by=0.1)
+axis(side = 2, at = ytick, tck=-0.03,labels = round(ytick,digits=2))
+
+mtext("LRPI of BTF\nin China's claimed EEZ",side=2,font=2,col="black",line=2.5,cex=1,las=0)
+abline(v=c(1978),lty="dotted",col="black")
+text(x=1978,y=0.2,labels = "1978:\nEconomic reform",pos=2,col="black",cex=1)
+text(x=1952,y=-0.33,labels = "Biased by the estimated high prices of shrimps",pos=4,col="red1",cex=1)
+text(x=1994,y=-0.3,labels = "Biomass trawling",pos=4,col="red1",cex=1)
+legend("topright",legend=c("Fish species","All species"),
+       cex=1,text.font=c(2,1),lwd=c(2,1),
+       text.col=c("blue","black"),lty=c("solid","solid"),col=c("blue","black"))## Add Legend
+mtext("b",side=3,adj=0,cex=1, font=2)
+
+## plot c)
+str(df)
+max<-max(df$FIB,df$fib_index);max
+min<-min(df$FIB,df$fib_index);min
+plot(FIB~year,df,type='o',lty="solid",pch=1,xlim=c(1950,2015),ylim=c(min,max),xlab="",ylab="",las=1,xaxt="n", yaxt="n")
 polygon(x=c(sh$year[1:14],rev(sh$year[1:14])),
         y=c(rep(-10,14), rev(rep(4,14))),
         col=adjustcolor("cyan",alpha.f = 0.1),border = NA)
@@ -482,7 +685,7 @@ polygon(x=c(sh$year[47:65],rev(sh$year[47:65])),
         y=c(rep(-10,19), rev(rep(4,19))),
         col=adjustcolor("cyan",alpha.f = 0.5),border = NA)
 
-lines(fib_index~year,df4,type='o',pch=17,col="black")
+lines(fib_index~year,df,type='o',pch=17,col="black")
 
 xtick<-seq(1950, 2015, by=1)
 axis(side = 1, at = xtick, tck=-0.01,labels = NA)
@@ -506,48 +709,9 @@ text(x=1996,y=1.7,labels = "Expansion slowed down",pos=4,col="red1",cex=1)
 legend("topleft",legend=c("All fisheries (estimated by SAUP)","BTF (this study)"),
        cex = 1,
        text.col=c("black","black"),lty=c("solid","solid"),pch=c(17,1),col=c("black","black"))## Add Legend
-mtext("b",side=3,adj=0,cex=1, font=2)
-## plot c)
-par(mar=c(2,5.2,1.2,0.1))
-str(df4)
-max<-max(df4$df_LRPI,df4$df_LRPI_f);max
-min<-min(df4$df_LRPI,df4$df_LRPI_f);min
-plot(df_LRPI~year,df4,type='l',xlim=c(1950,2015),ylim=c(min,max),xlab="",ylab="",las=1,xaxt="n", yaxt="n")
-polygon(x=c(sh$year[1:14],rev(sh$year[1:14])),
-        y=c(rep(-10,14), rev(rep(4,14))),
-        col=adjustcolor("cyan",alpha.f = 0.1),border = NA)
-polygon(x=c(sh$year[14:29],rev(sh$year[14:29])),
-        y=c(rep(-10,16), rev(rep(4,16))),
-        col=adjustcolor("cyan",alpha.f = 0.2),border = NA)
-polygon(x=c(sh$year[29:47],rev(sh$year[29:47])),
-        y=c(rep(-10,19), rev(rep(4,19))),
-        col=adjustcolor("cyan",alpha.f = 0.3),border = NA)
-polygon(x=c(sh$year[47:65],rev(sh$year[47:65])),
-        y=c(rep(-10,19), rev(rep(4,19))),
-        col=adjustcolor("cyan",alpha.f = 0.5),border = NA)
-lines(df_LRPI_f~year,df4,type='l',col="blue",lwd=2)
-abline(h=0,lty="dashed",col="red1")
-xtick<-seq(1950, 2015, by=1)
-axis(side = 1, at = xtick, tck=-0.01,labels = NA)
-xtick<-seq(1950, 2015, by=5)
-axis(side = 1, at = xtick, tck=-0.03,labels = xtick)
-
-ytick<-seq(-0.35,0.25,by=0.05)
-axis(side = 2, at = ytick, tck=-0.01,labels = NA)
-ytick<-seq(-0.3,0.2,by=0.1)
-axis(side = 2, at = ytick, tck=-0.03,labels = round(ytick,digits=2))
-
-mtext("LRPI of BTF\nin China's claimed EEZ",side=2,font=2,col="black",line=2.5,cex=1,las=0)
-abline(v=c(1978),lty="dotted",col="black")
-text(x=1978,y=0.2,labels = "1978:\nEconomic reform",pos=2,col="black",cex=1)
-text(x=1952,y=-0.33,labels = "Biased by the estimated high prices of shrimps",pos=4,col="red1",cex=1)
-text(x=1994,y=-0.3,labels = "Biomass trawling",pos=4,col="red1",cex=1)
-legend("topright",legend=c("Fish species","All species"),
-       cex=1,text.font=c(2,1),lwd=c(2,1),
-       text.col=c("blue","black"),lty=c("solid","solid"),col=c("blue","black"))## Add Legend
 mtext("c",side=3,adj=0,cex=1, font=2)
-dev.off()
 
+dev.off()
 ### Fig. 4 plot for fishery stock status
 ## read data
 setwd("C:/Users/xiong/Desktop/MS_history of BTF China")
@@ -704,7 +868,7 @@ df4<-data.frame(EEZ=eez, Catch=bt_eez4)
 write.csv(df4,"CN_bt_E4.csv")
 head(df4);str(df4)
 #### Read the above dataset in each era in ArcMap to cerate the footprint a) to d) in Figure 5
-
+library(reshape2)
 # For Figure 5e: summarize catch for each EEZ in each year
 cbt<-data.frame(matrix(0,nrow=65,ncol=36,dimnames = list(c(1950:2014),eez)))
 cbt
@@ -851,4 +1015,74 @@ p16
 p<-get_legend(p19)
 p14
 ########################################################################################################
+## read data
+setwd("C:/Users/xiong/Desktop/MS_history of BTF China")
+bt_df<-read.csv("BT_global.csv", header = TRUE, sep=',')
+eez<-unique(bt_df$fishing_entity)
+l<-length(eez);l
+cbt<-data.frame(matrix(0,nrow=65,ncol=l,dimnames = list(c(1950:2014),eez)))
+for(i in 1:65){
+        df<-subset(bt_df,bt_df$year==i+1949)
+        for(j in 1:l){
+                m<-eez[j]
+                cbt[i,j]<-sum(subset(df$tonnes,df$fishing_entity==m))
+        }
+}
+head(cbt)
+str(cbt)
+str(cbt)
+cbt$Year<-c(1950:2014)
+write.csv(cbt, "BT_global_by_country.csv")
+
+## plot
+df<-read.csv("BT_top_nations.csv", header = TRUE, sep=',')
+df1<-subset(df[,c(1:11)]);head(df1)
+library(reshape2)
+df1<-melt(df1,id="Year")
+str(df1)
+df1$variable2<-relevel(df1$variable, 'China')
+library(ggplot2)
+p1<-ggplot(df1,aes(x = Year, y = value*100, fill=variable2))+
+        geom_area(alpha=1 , size=.2, colour="white")+
+        labs(x = "", y = "% landings of global BTF")+
+        scale_x_continuous(breaks=seq(1950,2014,10))+
+        scale_fill_manual(name="Major fishing powers\nin the history",
+                          values = c("red","blue","pink2","yellow","yellow4","green","darkgreen","purple","brown4","grey50"))+
+        geom_vline(xintercept = c(1985,1996),colour="black",linetype="dotted",lwd=2)+
+        theme(legend.position = "right",
+              axis.text=element_text(size=12,face = "bold"),
+              axis.title.x = element_text(color = "black", size = 11, face = "bold"),
+              axis.title.y = element_text(color = "black", size = 11, face = "bold"),
+              legend.title = element_text(size = 13, face = "bold"),
+              legend.text = element_text(size = 12, face = "bold"),
+              legend.justification ="top")
+p1
+####
+df2<-subset(df[,c(1,13:22)]);head(df2)
+library(reshape2)
+df2<-melt(df2,id="Year")
+str(df2)
+df2$variable2<-relevel(df2$variable, 'China.1')
+library(ggplot2)
+p2<-ggplot(df2,aes(x = Year, y = value/1000000, fill=variable2))+
+        geom_area(alpha=1 , size=.2, colour="white")+
+        labs(x = "Year", y = "Stacked landings of gloabl BTF (Mt)")+
+        scale_x_continuous(breaks=seq(1950,2014,10))+
+        scale_fill_manual(name="Fishing Nations:",
+                          values = c("red","blue","pink2","yellow","yellow4","green","darkgreen","purple","brown4","grey50"))+
+        geom_vline(xintercept = c(1985,1996),colour="black",linetype="dotted",lwd=2)+
+        theme(legend.position = "right",
+              axis.text=element_text(size=12,face = "bold"),
+              axis.title.x = element_text(color = "black", size = 11, face = "bold"),
+              axis.title.y = element_text(color = "black", size = 11, face = "bold"),
+              legend.title = element_text(size = 13, face = "bold"),
+              legend.text = element_text(size = 12, face = "bold"),
+              legend.justification = c("left", "top"))
+p2
+library(ggpubr)
+tiff("DW EEZs/Global_BTF.tif",width = 7.4, height = 8, units = 'in', res = 300)
+ggarrange(p1,p2,ncol=1,nrow=2,common.legend = T, legend = "top",
+          labels=c("a)", "b)"))
+dev.off()
+
 ### The End ###########
